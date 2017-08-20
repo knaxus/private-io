@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server",
-    "webpack": "webpack",
+    "webpack": "webpack -w",
     "wp": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,15 +22,17 @@
     "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
-    "material-ui": "^0.19.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-mdl": "^1.10.3",
     "react-router": "^4.1.2",
     "react-tap-event-plugin": "^2.0.1",
     "socket.io": "^2.0.3"
   },
   "devDependencies": {
+    "babel-loader": "^7.1.2",
+    "babel-preset-react": "^6.24.1",
     "source-map": "^0.5.6",
     "webpack": "^3.5.5"
   }
