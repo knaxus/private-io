@@ -4,9 +4,17 @@
   "description": "tring to clone whatsapp",
   "main": "server.js",
   "scripts": {
+    "dev": "nodemon server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Ashok Dey",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4"
+  }
 }
