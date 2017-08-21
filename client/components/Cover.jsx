@@ -26,7 +26,7 @@ class Cover extends Component{
               <input ref="username" id="username" placeholder="Type a username here" type="text" className="validate" autoComplete="off"/>
             </div>
             <div className="col s4 l2">
-              <button className="waves-effect waves-light btn" style={{marginTop: '25px'}}>Start</button>
+              <button className="btn" style={{marginTop: '25px'}}>Start</button>
             </div>
           </form>
         </div>

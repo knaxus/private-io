@@ -49,7 +49,10 @@ class App extends Component{
     const currentUsers = this.state.users;
     const checkUsername = currentUsers.find((user) => user.username === username);
 
-    if(typeof checkUsername !== undefined){
+    console.log(currentUsers);
+    console.log(checkUsername);
+
+    if(typeof checkUsername !== 'undefined'){
       return alert('Username Taken');
     }
 
@@ -62,7 +65,7 @@ class App extends Component{
     }
     else if (!this.state.connectedToServer) {
       //TODO flash a toaster
-      alert('No connection to server');
+      alert('No connection to server, Please Refresh');
     }
     // const allUsers = [...this.state.users, user];
     // this.setState({
@@ -91,6 +94,9 @@ class App extends Component{
       }
 
       socket.emit('MessageCreated', thread);
+    }
+    else {
+      return alert('No connection!');
     }
   }
 
