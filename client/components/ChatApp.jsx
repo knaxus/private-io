@@ -13,7 +13,7 @@ class ChatApp extends Component{
         {username: 'Ankit'}, 
         {username: 'Akash'}, 
         {username: 'Arun'}, 
-        {username: 'Jhon'}, 
+        {username: 'John'}, 
         {username: 'Danny'}, 
         {username: 'Arvil'}, 
         {username: 'Lois'}
@@ -30,21 +30,10 @@ class ChatApp extends Component{
     }
   }
 
-  _handleMessageSubmit(e){
-    e.preventDefault();
-    const message = ReactDOM.findDOMNode('message').value;
-
-    console.log(message);
-
-    // const newMessages = [...this.state.messages];
-
-    // if(message.length > 0){
-    //   const thread = {from: this.state.activeUser, message: message};
-    //   newMessages.push(thread);
-    // }
-
-    // this.setState({messages: newMessages});
-    //this.refs.message.value = '';
+  _addMessage(message){
+    const newMessages = [...this.state.messages];
+    newMessages.push(message);
+    this.setState({messages: newMessages});
   }
 
   render(){
@@ -64,7 +53,7 @@ class ChatApp extends Component{
           <div className="col s9 l10">
             <MessageList messages = {this.state.messages} activeChat={this.state.activeChat} />
             <div className="row">
-              <MessageForm handleSubmit={this._handleMessageSubmit.bind(this)}/>                          
+              <MessageForm activeUser={this.state.activeUser} addMessage={this._addMessage.bind(this)}/>                          
             </div>
           </div>
         </div>
