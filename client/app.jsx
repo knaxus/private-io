@@ -10,13 +10,16 @@ class App extends Component{
       this.setState({connectedToServer: true});      
       console.log('Connected to server');
 
+      socket.on('NewUserList', (usersList) => {
+        console.log('new list arrived');
+        this.setState({users: usersList.list});
+      });
+
       socket.on('disconnect', () => {
         this.setState({connectedToServer: false});        
         console.log('Disconnected from server');
       });
     });
-
-    
   }
   constructor(props){
     super(props);

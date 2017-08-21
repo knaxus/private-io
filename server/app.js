@@ -23,6 +23,9 @@ io.on('connect', (socket) => {
   socket.on('NewUser', (username) => {
     onlineUsers.push(username);
     console.log(onlineUsers);
+
+    socket.emit('NewUserList', {list: onlineUsers});
+
   });
 
   socket.on('disconnect', (socket) => {
