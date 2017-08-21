@@ -21,7 +21,7 @@ io.on('connect', (socket) => {
   console.log('new connection');
 
   socket.on('NewUser', (username) => {
-    onlineUsers.push({username});
+    onlineUsers.push(username);
     console.log(onlineUsers);
   });
 

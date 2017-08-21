@@ -47,12 +47,23 @@ class App extends Component{
   _addNewUser(username){
     username = username.charAt(0).toUpperCase() + username.slice(1);
     const user = {username};
-    const allUsers = [...this.state.users, user];
-    this.setState({
-      users: allUsers,
-      isSubmitted: true,
-      activeUser: username
-    });
+    if(this.state.connectedToServer){
+      socket.emit('NewUser', {username});
+      this.setState({
+        isSubmitted: true,
+        activeUser: username
+      });
+    }
+    else if (!this.state.connectedToServer) {
+      //TODO flash a toaster
+      alert('No connection to server');
+    }
+    // const allUsers = [...this.state.users, user];
+    // this.setState({
+    //   users: allUsers,
+    //   isSubmitted: true,
+    //   activeUser: username
+    // });
   }
 
   _selectUserForChat(username){
