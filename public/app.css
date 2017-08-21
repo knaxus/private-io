@@ -1,0 +1,10 @@
+.chat-list li.chats {
+  background: #ecf0f1;
+  margin-bottom: 1%;
+}
+
+.msg-form {
+  bottom: 0;
+  position: fixed;
+  width: 80%;
+}
