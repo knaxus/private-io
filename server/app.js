@@ -33,6 +33,7 @@ io.on('connect', (socket) => {
   socket.on('MessageCreated', (thread) => {
     // take the thread add timestamp to it and emit it  back
     thread.createdAt = moment(new Date).toString();
+    socket.emit('NewMessage', thread);
     console.log(thread);
   })
 

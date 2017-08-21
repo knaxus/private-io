@@ -5,12 +5,12 @@ class MessageForm extends Component{
   
   _handleMessageSubmit(e){
     e.preventDefault();
-    const {addMessage} = this.props;
+    const {sendMessage} = this.props;
     const msgThread = this.refs.message.value;
 
     if(msgThread.length > 0) {
       const message = { from: this.props.activeUser, text: msgThread}; 
-      addMessage(message);
+      sendMessage(message);
     }
 
     this.refs.message.value = '';
@@ -32,5 +32,5 @@ class MessageForm extends Component{
 export default MessageForm;
 
 MessageForm.propTypes = {
-  addMessage: propTypes.func.isRequired
+  sendMessage: propTypes.func.isRequired
 }

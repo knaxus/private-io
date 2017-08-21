@@ -22,7 +22,7 @@ class ChatApp extends Component{
           <div className="col s9 l10">
             <MessageList messages = {this.props.messages} activeChat={this.props.activeChat} />
             <div className="row">
-              <MessageForm activeUser={this.props.activeUser} addMessage={this.props.addMessage.bind(this)}/>                          
+              <MessageForm activeUser={this.props.activeUser} sendMessage={this.props.sendMessage.bind(this)}/>                          
             </div>
           </div>
         </div>

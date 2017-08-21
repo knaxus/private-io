@@ -15,10 +15,14 @@ class App extends Component{
       });
 
       socket.on('NewUserList', (usersList) => {
-        console.log(usersList);
         const filteredUsersList = usersList.list.filter((user) => user.username !== this.state.activeUser);
         this.setState({users: filteredUsersList});
       });
+
+      socket.on('NewMessage', (thread) => {
+        const newThreads = [...this.state.messages, thread];
+        this.setState({messages: newThreads});
+      })
 
       socket.on('disconnect', () => {
         this.setState({connectedToServer: false});        
@@ -31,13 +35,7 @@ class App extends Component{
     this.state = {
       connectedToServer: false,
       users: [],
-      messages: [
-        {from: 'Arun', text: 'Hello Ashok, how are you'},
-        {from: 'Ashok', text: 'Hello Arun, I am fine you say'},
-        {from: 'Arun', text: 'I am doing great'},
-        {from: 'Ashok', text: 'What about studies'},
-        {from: 'Arun', text: 'Going good, learning React also!'}
-      ],
+      messages: [],
       activeUser: 'Default',
       activeChat: 'Choose user to chat with',
       isSubmitted: false
@@ -66,19 +64,13 @@ class App extends Component{
       //TODO flash a toaster
       alert('No connection to server, Please Refresh');
     }
-    // const allUsers = [...this.state.users, user];
-    // this.setState({
-    //   users: allUsers,
-    //   isSubmitted: true,
-    //   activeUser: username
-    // });
   }
 
   _selectUserForChat(username){
     this.setState({activeChat: username});
   }
 
-  _addMessage(message){
+  _sendMessage(message){
     // const newMessages = [...this.state.messages];
     // newMessages.push(message);
     // this.setState({messages: newMessages});
@@ -105,7 +97,7 @@ class App extends Component{
         <ChatApp 
           {...this.state}  
           selectUserForChat = {this._selectUserForChat.bind(this)}
-          addMessage = {this._addMessage.bind(this)}
+          sendMessage = {this._sendMessage.bind(this)}
         />
       );
     }

@@ -23,7 +23,7 @@ class Cover extends Component{
           <img src="img/logo.png" alt="Logo"/>
           <form onSubmit={this._handleUserNameSubmit.bind(this)}>
             <div className="input-field col s6">
-              <input ref="username" id="username" placeholder="Type a username here" type="text" className="validate" autoComplete="off"/>
+              <input ref="username" id="username" placeholder="Type a username here" type="text" className="validate" autoComplete="off" autoFocus/>
             </div>
             <div className="col s4 l2">
               <button className="btn" style={{marginTop: '25px'}}>Start</button>
