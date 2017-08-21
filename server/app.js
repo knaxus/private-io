@@ -3,6 +3,7 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import http from 'http';
 import socketIO from 'socket.io';
+import moment from 'moment';
 
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '../public');
@@ -25,8 +26,13 @@ io.on('connect', (socket) => {
     console.log(onlineUsers);
 
     socket.emit('NewUserList', {list: onlineUsers});
-
   });
+
+  socket.on('MessageCreated', (thread) => {
+    // take the thread add timestamp to it and emit it  back
+    thread.createdAt = moment(new Date).toString();
+    console.log(thread);
+  })
 
   socket.on('disconnect', (socket) => {
     console.log('Connection ended');

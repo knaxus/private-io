@@ -11,7 +11,6 @@ class App extends Component{
       console.log('Connected to server');
 
       socket.on('NewUserList', (usersList) => {
-        console.log('new list arrived');
         this.setState({users: usersList.list});
       });
 
@@ -25,15 +24,7 @@ class App extends Component{
     super(props);
     this.state = {
       connectedToServer: false,
-      users: [
-        {username: 'Ankit'}, 
-        {username: 'Akash'}, 
-        {username: 'Arun'}, 
-        {username: 'John'}, 
-        {username: 'Danny'}, 
-        {username: 'Arvil'}, 
-        {username: 'Lois'}
-      ],
+      users: [],
       messages: [
         {from: 'Arun', text: 'Hello Ashok, how are you'},
         {from: 'Ashok', text: 'Hello Arun, I am fine you say'},
@@ -74,9 +65,21 @@ class App extends Component{
   }
 
   _addMessage(message){
-    const newMessages = [...this.state.messages];
-    newMessages.push(message);
-    this.setState({messages: newMessages});
+    // const newMessages = [...this.state.messages];
+    // newMessages.push(message);
+    // this.setState({messages: newMessages});
+    if(this.state.connectedToServer){
+      const thread= {
+        ...message,
+        to: this.state.activeChat
+      }
+
+      if(thread.to === 'Choose user to chat with'){
+        return alert('Chooose a person to chat with');
+      }
+
+      socket.emit('MessageCreated', thread);
+    }
   }
 
   render(){
