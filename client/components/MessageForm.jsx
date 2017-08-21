@@ -27,10 +27,10 @@ class MessageForm extends Component{
     return(
       <form className="msg-form" onSubmit={this._handleMessageSubmit.bind(this)}>
         <div className="input-field col s8">
-          <input ref="message" id="last_name" type="text" className="validate"/>
+          <input ref="message" id="last_name" type="text"/>
           <label htmlFor="last_name">Your Message</label>
         </div>
-        <button className="waves-effect waves-light btn col s2" style={{marginTop: '1.5%'}}>Send <i className="material-icons right">send</i></button>
+        <button className="btn col s2" style={{marginTop: '1.5%'}}>Send <i className="material-icons right">send</i></button>
       </form>
     );
   }
