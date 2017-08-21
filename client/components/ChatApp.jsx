@@ -11,7 +11,7 @@ class ChatApp extends Component{
         <div className="row">
           <nav>
             <div className="nav-wrapper">
-              <a href="#" className="brand-logo center">What's Up?</a>
+              <a href="#" className="brand-logo center">What's Up {this.props.activeUser}?</a>
             </div>
           </nav>
         </div>

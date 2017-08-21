@@ -15,7 +15,9 @@ class App extends Component{
       });
 
       socket.on('NewUserList', (usersList) => {
-        this.setState({users: usersList.list});
+        console.log(usersList);
+        const filteredUsersList = usersList.list.filter((user) => user.username !== this.state.activeUser);
+        this.setState({users: filteredUsersList});
       });
 
       socket.on('disconnect', () => {
@@ -48,9 +50,6 @@ class App extends Component{
 
     const currentUsers = this.state.users;
     const checkUsername = currentUsers.find((user) => user.username === username);
-
-    console.log(currentUsers);
-    console.log(checkUsername);
 
     if(typeof checkUsername !== 'undefined'){
       return alert('Username Taken');
