@@ -8,7 +8,7 @@ class MessageList extends Component{
     let i= 0;
     return(
       <ul className="collection with-header">
-        <li className="collection-header">
+        <li className="collection-header" style={{backgroundColor: '#81d4fa'}}>
           <h4>{this.props.activeChat}</h4>
         </li>
         <div className="chats-holder">

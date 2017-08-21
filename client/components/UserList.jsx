@@ -8,7 +8,7 @@ class UserList extends Component{
     let i = 0;
     return(
       <ul className="collection with-header">
-        <li className="collection-header">
+        <li className="collection-header" style={{backgroundColor: '#80deea'}}>
           <h4>Online Users</h4>
         </li>
         <div className="users-holder">

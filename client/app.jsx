@@ -37,7 +37,6 @@ class App extends Component{
       users: allUsers,
       isSubmitted: true
     });
-    //this.render();
   }
 
   _selectUserForChat(username){
