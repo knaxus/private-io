@@ -8,13 +8,18 @@ class UserList extends Component{
 
     return(
       <div class="row">
-        <div class="col s2 user-list">
-          <ul class="collection">
-            {
-              users.map((user) => {
-                <User username={user}/>
-              })
-            }
+        <div class="col s3 l2 user-list">
+          <ul class="collection with-header">
+            <li class="collection-header">
+              <h4>Online Users</h4>
+            </li>
+            <div class="users-holder">
+              {
+                users.map((user) => {
+                  <User username={user}/>
+                })
+              }
+            </div>
           </ul>
         </div>
       </div>
