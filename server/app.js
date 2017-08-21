@@ -24,8 +24,8 @@ io.on('connect', (socket) => {
   socket.on('NewUser', (username) => {
     onlineUsers.push(username);
     console.log(onlineUsers);
-
-    socket.emit('NewUserList', {list: onlineUsers});
+    // io.emit so that each connected user can see the updated user
+    io.emit('NewUserList', {list: onlineUsers});
   });
 
   socket.on('MessageCreated', (thread) => {
