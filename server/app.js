@@ -1,9 +1,9 @@
-import express from 'express';
-import path from 'path';
-import bodyParser from 'body-parser';
-import http from 'http';
-import socketIO from 'socket.io';
-import moment from 'moment';
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const http = require('http');
+const socketIO = require('socket.io');
+const moment = require('moment');
 
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '../public');
