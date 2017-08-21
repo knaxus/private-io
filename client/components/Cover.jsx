@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 
 class Cover extends Component{
   _handleUserNameSubmit(e){
-    console.log('Submitted');
     e.preventDefault();
     const {addUser} = this.props;
     const username = this.refs.username.value;
@@ -14,8 +13,6 @@ class Cover extends Component{
     else {
       this.refs.username.value = 'Username should be more than 3 chars';
     }
-
-    console.log(username);
   }
 
   render(){

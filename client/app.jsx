@@ -5,9 +5,23 @@ import Cover from './components/Cover.jsx';
 
 
 class App extends Component{
+  componentDidMount(){
+    socket.on('connect', () => {
+      this.setState({connectedToServer: true});      
+      console.log('Connected to server');
+
+      socket.on('disconnect', () => {
+        this.setState({connectedToServer: false});        
+        console.log('Disconnected from server');
+      });
+    });
+
+    
+  }
   constructor(props){
     super(props);
     this.state = {
+      connectedToServer: false,
       users: [
         {username: 'Ankit'}, 
         {username: 'Akash'}, 
@@ -31,6 +45,7 @@ class App extends Component{
   }
 
   _addNewUser(username){
+    username = username.charAt(0).toUpperCase() + username.slice(1);
     const user = {username};
     const allUsers = [...this.state.users, user];
     this.setState({
