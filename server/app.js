@@ -11,7 +11,6 @@ const publicPath = path.join(__dirname, '../public');
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
-const onlineUsers = [];
 const hashMap = [];
 
 /**
@@ -22,16 +21,14 @@ app.use(express.static(publicPath));
 io.on('connect', (socket) => {
   console.log('new connection');
 
-  socket.emit('UserData', onlineUsers);
+  socket.emit('UserData', hashMap);
 
   socket.on('NewUser', (username) => {
-    onlineUsers.push(username);
     // push the socket id and username in the Hash
     hashMap.push({username: username.username, id: socket.id});
-    console.log(onlineUsers);
     console.log(hashMap);
     // io.emit so that each connected user can see the updated user
-    io.emit('NewUserList', {list: onlineUsers});
+    io.emit('NewUserList', {list: hashMap});
   });
 
   socket.on('MessageCreated', (thread) => {
@@ -61,10 +58,15 @@ io.on('connect', (socket) => {
     // send to the sender 
     socket.emit('NewMessage', thread);
     console.log(thread);
-  })
+  });
 
-  socket.on('disconnect', (socket) => {
-    console.log('Connection ended');
+  socket.on('disconnect', () => {
+    // filter out the username from the hash map and emit 'NewUserList' 
+    // to update the state in react client  side
+    const newUsers = hashMap.filter((set) => set.id !== socket.id);
+    io.emit('NewUserList', {list: newUsers});    
+    console.log('Connection ended', socket.id);
+    console.log(newUsers);
   });
 });
 
