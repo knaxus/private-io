@@ -10,6 +10,10 @@ class App extends Component{
       this.setState({connectedToServer: true});      
       console.log('Connected to server');
 
+      socket.on('UserData', (users) => {
+        this.setState({users});
+      });
+
       socket.on('NewUserList', (usersList) => {
         this.setState({users: usersList.list});
       });
@@ -41,6 +45,14 @@ class App extends Component{
   _addNewUser(username){
     username = username.charAt(0).toUpperCase() + username.slice(1);
     const user = {username};
+
+    const currentUsers = this.state.users;
+    const checkUsername = currentUsers.find((user) => user.username === username);
+
+    if(typeof checkUsername !== undefined){
+      return alert('Username Taken');
+    }
+
     if(this.state.connectedToServer){
       socket.emit('NewUser', {username});
       this.setState({

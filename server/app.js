@@ -21,6 +21,8 @@ app.use(express.static(publicPath));
 io.on('connect', (socket) => {
   console.log('new connection');
 
+  socket.emit('UserData', onlineUsers);
+
   socket.on('NewUser', (username) => {
     onlineUsers.push(username);
     console.log(onlineUsers);
