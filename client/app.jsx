@@ -24,7 +24,7 @@ class App extends Component{
         {from: 'Ashok', text: 'What about studies'},
         {from: 'Arun', text: 'Going good, learning React also!'}
       ],
-      activeUser: 'Ashok',
+      activeUser: 'Default',
       activeChat: 'Choose user to chat with',
       isSubmitted: false
     }
@@ -35,7 +35,8 @@ class App extends Component{
     const allUsers = [...this.state.users, user];
     this.setState({
       users: allUsers,
-      isSubmitted: true
+      isSubmitted: true,
+      activeUser: username
     });
   }
 
