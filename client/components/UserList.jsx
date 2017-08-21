@@ -13,7 +13,7 @@ class UserList extends Component{
         </li>
         <div className="users-holder">
           {
-            users.map(user => <User key={++i} username={user.username} />)
+            users.map(user => <User key={++i} selectUser={this.props.selectUser} username={user.username} />)
           }         
         </div>
       </ul>
@@ -24,5 +24,6 @@ class UserList extends Component{
 export default UserList;
 
 UserList.propTypes = {
-  users: propTypes.array.isRequired
+  users: propTypes.array.isRequired,
+  selectUser: propTypes.func.isRequired
 }

@@ -39,5 +39,5 @@ class MessageForm extends Component{
 export default MessageForm;
 
 MessageForm.propTypes = {
-  handleSubmit: propTypes.func.isRequired
+  addMessage: propTypes.func.isRequired
 }

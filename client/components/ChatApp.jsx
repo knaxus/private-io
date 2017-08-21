@@ -26,8 +26,12 @@ class ChatApp extends Component{
         {from: 'Arun', text: 'Going good, learning React also!'}
       ],
       activeUser: 'Ashok',
-      activeChat: 'Choose User'
+      activeChat: 'Choose user to chat with'
     }
+  }
+
+  _selectUserForChat(username){
+    this.setState({activeChat: username});
   }
 
   _addMessage(message){
@@ -48,7 +52,7 @@ class ChatApp extends Component{
         </div>
         <div className="row">
           <div className="col s3 l2">
-            <UserList users={this.state.users}/>
+            <UserList selectUser={this._selectUserForChat.bind(this)} users={this.state.users}/>
           </div>
           <div className="col s9 l10">
             <MessageList messages = {this.state.messages} activeChat={this.state.activeChat} />
