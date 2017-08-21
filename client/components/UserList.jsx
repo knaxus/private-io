@@ -16,7 +16,7 @@ class UserList extends Component{
             <div class="users-holder">
               {
                 users.map((user) => {
-                  <User username={user}/>
+                  <User username={user.username}/>
                 })
               }
             </div>
