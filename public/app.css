@@ -1,3 +1,19 @@
+body {
+  overflow-y: hidden;
+}
+
+nav {
+  background-color: #3498db !important;
+}
+
+.btn {
+  background-color: #c0392b !important;
+}
+
+.btn:hover {
+  background-color: #e74c3c !important;
+}
+
 .chat-list li.chats {
   background: #ecf0f1;
   margin-bottom: 1%;
@@ -7,4 +23,14 @@
   bottom: 0;
   position: fixed;
   width: 80%;
+}
+
+.chats-holder {
+  overflow-y: scroll;
+  height: 70vh;
+}
+
+.users-holder {
+  overflow-y: scroll;
+  height: 80vh;
 }

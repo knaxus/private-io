@@ -5,22 +5,18 @@ import Message from './Message.jsx';
 class MessageList extends Component{
   render(){
     const {messages} = this.props;
-
+    let i= 0;
     return(
-      <div class="col s9 l10 chat-list">
-        <ul class="collection with-header">
-          <li class="collection-header">
-            <h4>First Name</h4>
-          </li>
-          <div class="chats-holder">
-            {
-              messages.map((message) => {
-                <Message message={message}/>
-              })
-            }
-          </div>
-        </ul>
-      </div>
+      <ul className="collection with-header">
+        <li className="collection-header">
+          <h4>{this.props.activeChat}</h4>
+        </li>
+        <div className="chats-holder">
+          {
+            messages.map((message) => <Message key={++i} message={message}/>)
+          }
+        </div>
+      </ul>
     );
   }
 }

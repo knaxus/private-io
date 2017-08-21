@@ -5,24 +5,18 @@ import User from './User.jsx';
 class UserList extends Component{
   render(){
     const {users} = this.props;
-
+    let i = 0;
     return(
-      <div class="row">
-        <div class="col s3 l2 user-list">
-          <ul class="collection with-header">
-            <li class="collection-header">
-              <h4>Online Users</h4>
-            </li>
-            <div class="users-holder">
-              {
-                users.map((user) => {
-                  <User username={user.username}/>
-                })
-              }
-            </div>
-          </ul>
+      <ul className="collection with-header">
+        <li className="collection-header">
+          <h4>Online Users</h4>
+        </li>
+        <div className="users-holder">
+          {
+            users.map(user => <User key={++i} username={user.username} />)
+          }         
         </div>
-      </div>
+      </ul>
     );
   }
 }

@@ -15,5 +15,5 @@ class User extends Component{
 export default User;
 
 User.propTypes = {
-  username: propTypes.object.isRequired
+  username: propTypes.string.isRequired
 }
