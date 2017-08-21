@@ -19,11 +19,11 @@ class ChatApp extends Component{
         {username: 'Lois'}
       ],
       messages: [
-        {from: 'Ashok', text: 'Hello Ashok, how are you'},
-        {from: 'Arun', text: 'Hello Arun, I am fine you say'},
-        {from: 'Ashok', text: 'I am doing great'},
-        {from: 'Arun', text: 'What about studies'},
-        {from: 'Ashok', text: 'Going good, learning React also!'}
+        {from: 'Arun', text: 'Hello Ashok, how are you'},
+        {from: 'Ashok', text: 'Hello Arun, I am fine you say'},
+        {from: 'Arun', text: 'I am doing great'},
+        {from: 'Ashok', text: 'What about studies'},
+        {from: 'Arun', text: 'Going good, learning React also!'}
       ],
       activeUser: 'Ashok',
       activeChat: 'Choose User'
