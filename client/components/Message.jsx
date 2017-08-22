@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import propTypes from 'prop-types';
 import moment from 'moment';
+import Linkify from 'react-linkify';
 
 class Message extends Component{
   render(){
@@ -10,7 +11,11 @@ class Message extends Component{
       <li className="collection-item chats">
         <strong style={{fontSize:'1.1em', color: '#2c3e50'}}> {message.from} </strong>
         <span style={{fontSize: '0.8em', color: '#7f8c8d'}}>&nbsp;&nbsp;&nbsp; {message.createdAt}</span>
-        <i><p style={{fontSize:'1.2em', color: '#00695c', marginTop: 0, marginBottom: '2px'}}> {message.text} </p></i>
+        <i>
+          <p style={{fontSize:'1.2em', color: '#00695c', marginTop: 0, marginBottom: '2px'}}> 
+          <Linkify>{message.text}</Linkify> 
+          </p>
+        </i>
       </li>
     );
   }

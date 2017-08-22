@@ -4,7 +4,6 @@ import ChatApp from './components/ChatApp.jsx';
 import Cover from './components/Cover.jsx';
 import ReactEmoji from 'react-emoji';
 
-
 class App extends Component{
   componentDidMount(){
     socket.on('connect', () => {
@@ -22,7 +21,7 @@ class App extends Component{
 
       socket.on('NewMessage', (thread) => {
         // parse the emojis 
-        thread.text = ReactEmoji.emojify(thread.text);
+        thread.text = ReactEmoji.emojify(thread.text);      
 
         const fromUser = thread.from;
         const toUser = thread.to;
