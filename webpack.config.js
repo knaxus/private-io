@@ -14,22 +14,10 @@ module.exports = {
       use: 'babel-loader'
     }]
   },
-  // PLUGINS BELOW REDUCE BUNDLE SIZE FOR PRODUCTION
-  plugins: [
-    new webpack.DefinePlugin({
-    'process.env': {
-      'NODE_ENV': JSON.stringify('production')
-    }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-        sourceMap: false
-    }), //minify
-    new webpack.optimize.AggressiveMergingPlugin()//Merging chunks
-  ],
   resolve: {
     alias: {
       // alias for the components
     }
   },
-  // devtool: 'cheap-module-eval-source-map'
+  devtool: 'cheap-module-eval-source-map'
 }
