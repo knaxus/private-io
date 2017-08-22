@@ -23,10 +23,11 @@ _Somewhat close to **Whatsapp** still far far away..._
 - ```npm run dev``` : To run server with nodemon
 
 ### TODOS
-- Proper chatrooms
+- Proper chatrooms ```!important```
 - Message count badge for chats from other users
 - Tons of style fixes
-- Sidebar containing online users for small devices
+- Sidebar containing online users for mobile devices
+- Typing.. beside the name of the user like - User (Typing now..) 
 
 
 #### Screens

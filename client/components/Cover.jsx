@@ -20,7 +20,7 @@ class Cover extends Component{
       <div className="row">
         <div className="col s12 m10 l6 offset-l4 offset-m2">
           <h1>Welcome to WHAT'S UP !</h1>
-          <img src="img/logo.png" alt="Logo"/>
+          <img className="responsive-img" src="img/logo.png" alt="Logo"/>
           <form onSubmit={this._handleUserNameSubmit.bind(this)}>
             <div className="input-field col s6">
               <input ref="username" id="username" placeholder="Type a username here" type="text" className="validate" autoComplete="off" autoFocus/>
