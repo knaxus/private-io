@@ -29,10 +29,15 @@ class Cover extends Component{
               <button className="btn" style={{marginTop: '25px'}}>Start</button>
             </div>
           </form>
+          <br/><br/><br/>
+          <p style={{marginTop: '5%'}}>Undergoing project by <a href="http://ashokdey.github.io" target="_blank">Ashok Dey</a></p>
           <br/>
-          <br/>
-          <br/>
-          <p>Undergoing project by <a href="http://ashokdey.github.io" target="_blank">Ashok Dey</a>  </p>  
+          <p style={{marginTop: '-3%'}}>
+            <strong>New Updates:</strong> 
+            <br/>
+            * Suopport for emojis <br/>
+            * Detecting Links
+          </p>  
         </div>
       </div>
     );

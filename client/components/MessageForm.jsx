@@ -21,7 +21,7 @@ class MessageForm extends Component{
       <form className="msg-form" onSubmit={this._handleMessageSubmit.bind(this)}>
         <div className="input-field col s8">
           <input ref="message" id="last_name" type="text" autoComplete="off"/>
-          <label htmlFor="last_name">Your Message</label>
+          <label htmlFor="last_name">Your Message (You  can use emoticons as well like - :), ;) :* etc)</label>
         </div>
         <button className="btn col s2" style={{marginTop: '1.5%'}}>Send <i className="material-icons right">send</i></button>
       </form>
