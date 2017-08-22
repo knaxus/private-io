@@ -37,7 +37,7 @@ class App extends Component{
       users: [],
       messages: [],
       activeUser: '',
-      activeChat: 'Choose user to chat with',
+      chattingWith: 'Choose user to chat with',
       isSubmitted: false
     }
   }
@@ -67,7 +67,7 @@ class App extends Component{
   }
 
   _selectUserForChat(username){
-    this.setState({activeChat: username});
+    this.setState({chattingWith: username});
   }
 
   _sendMessage(message){
@@ -77,7 +77,7 @@ class App extends Component{
     if(this.state.connectedToServer){
       const thread= {
         ...message,
-        to: this.state.activeChat
+        to: this.state.chattingWith
       }
 
       if(thread.to === 'Choose user to chat with'){

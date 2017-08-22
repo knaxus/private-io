@@ -9,7 +9,7 @@ class MessageList extends Component{
     return(
       <ul className="collection with-header">
         <li className="collection-header" style={{backgroundColor: '#81d4fa'}}>
-          <h4>{this.props.activeChat}</h4>
+          <h4>{this.props.chattingWith}</h4>
         </li>
         <div className="chats-holder">
           {
@@ -24,5 +24,6 @@ class MessageList extends Component{
 export default MessageList;
 
 MessageList.propTypes = {
+  chattingWith: propTypes.string.isRequired,
   messages: propTypes.array.isRequired
 }
