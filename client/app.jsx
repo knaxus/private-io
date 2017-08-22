@@ -20,9 +20,26 @@ class App extends Component{
       });
 
       socket.on('NewMessage', (thread) => {
-        const newThreads = [...this.state.messages, thread];
-        this.setState({messages: newThreads});
-      })
+        
+        const fromUser = thread.from;
+        const toUser = thread.to;
+        const roomName = toUser + fromUser;
+
+        // search for chat room in state.rooms
+        const findRoom = this.state.rooms[roomName];
+
+        if(typeof findRoom !=='undefined'){
+          // add threads in the room 
+          this.setState({rooms: [thread, ...this.state.rooms[roomName]]});
+          // add new thread with old threads 
+          const chats = [thread, ...this.state.rooms[roomName]];
+          this.setState({messages: chats});
+        }
+        else {
+          const newThreads = [...this.state.messages, thread];
+          this.setState({messages: newThreads});
+        }
+      });
 
       socket.on('disconnect', () => {
         this.setState({connectedToServer: false});        
@@ -30,6 +47,7 @@ class App extends Component{
       });
     });
   }
+
   constructor(props){
     super(props);
     this.state = {
@@ -77,10 +95,10 @@ class App extends Component{
     let rooms = null; 
 
     // find roomName if exists
-    const checkRoom = this.state.rooms.find((room) => room.name == roomName);
+    const checkRoom = this.state.rooms[username];
 
     if(typeof checkRoom !== 'undefined'){
-      console.log('checkRoom selectUser', checkRoom);
+      
     }
     else {
       /**
@@ -88,9 +106,13 @@ class App extends Component{
        * and  store in state.rooms
        */
 
-      rooms = [...this.state.rooms, {name: roomName}];
+      rooms = [];
+      rooms[username];
 
-      this.setState({rooms});
+      this.setState({
+        rooms,
+        messages: []
+      });
     }
 
     this.setState({chattingWith: username});
