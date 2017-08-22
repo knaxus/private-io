@@ -1,7 +1,7 @@
 # PrivateIO - P2P Chatting
 _Somewhat close to **Whatsapp** still far far away..._
 
-![Logo](public/img/logo.png)
+![The First View](assets/screen-1.JPG)
 
 ### Made using:
 - **React** for UI
@@ -31,6 +31,6 @@ _Somewhat close to **Whatsapp** still far far away..._
 
 
 #### Screens
-![screen 1](assets/screen-1.JPG)
+The chat UI
 <br/><br/>
 ![screen 2](assets/screen-2.JPG)
