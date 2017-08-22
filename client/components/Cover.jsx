@@ -19,7 +19,7 @@ class Cover extends Component{
     return(
       <div className="row">
         <div className="col s12 m10 l6 offset-l4 offset-m2">
-          <h1>Welcome to WHAT'S UP !</h1>
+          <h1>Welcome to PrivateIO !</h1>
           <img className="responsive-img" src="img/logo.png" alt="Logo"/>
           <form onSubmit={this._handleUserNameSubmit.bind(this)}>
             <div className="input-field col s6">
