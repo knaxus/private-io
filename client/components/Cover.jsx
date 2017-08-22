@@ -29,6 +29,10 @@ class Cover extends Component{
               <button className="btn" style={{marginTop: '25px'}}>Start</button>
             </div>
           </form>
+          <br/>
+          <br/>
+          <br/>
+          <p>Undergoing project by <a href="http://ashokdey.github.io" target="_blank">Ashok Dey</a>  </p>  
         </div>
       </div>
     );

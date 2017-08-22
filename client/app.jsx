@@ -36,6 +36,7 @@ class App extends Component{
       connectedToServer: false,
       users: [],
       messages: [],
+      rooms: [],
       activeUser: '',
       chattingWith: 'Choose user to chat with',
       isSubmitted: false
@@ -67,6 +68,31 @@ class App extends Component{
   }
 
   _selectUserForChat(username){
+    /**
+     * Make a unique string with username + activeuser
+     * make room using that string
+     * store messages of both users in that room 
+     */
+    const roomName = username + this.state.activeUser;
+    let rooms = null; 
+
+    // find roomName if exists
+    const checkRoom = this.state.rooms.find((room) => room.name == roomName);
+
+    if(typeof checkRoom !== 'undefined'){
+      console.log('checkRoom selectUser', checkRoom);
+    }
+    else {
+      /**
+       * if failed to find room, create a room 
+       * and  store in state.rooms
+       */
+
+      rooms = [...this.state.rooms, {name: roomName}];
+
+      this.setState({rooms});
+    }
+
     this.setState({chattingWith: username});
   }
 
