@@ -95,10 +95,10 @@ class App extends Component{
     let rooms = null; 
 
     // find roomName if exists
-    const checkRoom = this.state.rooms[username];
-
+    const checkRoom = this.state.rooms[roomName];
+    
     if(typeof checkRoom !== 'undefined'){
-      
+      console.log('selec room old chats: => ', checkRoom);
     }
     else {
       /**
@@ -107,7 +107,7 @@ class App extends Component{
        */
 
       rooms = [];
-      rooms[username];
+      rooms[roomName];
 
       this.setState({
         rooms,
@@ -155,8 +155,5 @@ class App extends Component{
     )
   }
 }
-
-
-
 
 render(<App/>, document.getElementById('app'));
