@@ -9,7 +9,7 @@ class UserList extends Component{
     return(
       <ul className="collection with-header">
         <li className="collection-header" style={{backgroundColor: '#80deea'}}>
-          <h4>Online Users</h4>
+          <h4>Online Users [{this.props.users.length}]</h4>
         </li>
         <div className="users-holder">
           {

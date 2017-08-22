@@ -36,7 +36,7 @@ class App extends Component{
       connectedToServer: false,
       users: [],
       messages: [],
-      activeUser: 'Default',
+      activeUser: '',
       activeChat: 'Choose user to chat with',
       isSubmitted: false
     }

@@ -17,7 +17,7 @@ class ChatApp extends Component{
         </div>
         <div className="row">
           <div className="col s3 l2">
-            <UserList selectUser={this.props.selectUserForChat.bind(this)} users={this.props.users}/>
+            <UserList {...this.props} selectUser={this.props.selectUserForChat.bind(this)} users={this.props.users}/>
           </div>
           <div className="col s9 l10">
             <MessageList messages = {this.props.messages} activeChat={this.props.activeChat} />
