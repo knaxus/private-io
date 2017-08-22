@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import ChatApp from './components/ChatApp.jsx';
 import Cover from './components/Cover.jsx';
+import ReactEmoji from 'react-emoji';
 
 
 class App extends Component{
@@ -20,7 +21,9 @@ class App extends Component{
       });
 
       socket.on('NewMessage', (thread) => {
-        
+        // parse the emojis 
+        thread.text = ReactEmoji.emojify(thread.text);
+
         const fromUser = thread.from;
         const toUser = thread.to;
         const roomName = toUser + fromUser;
