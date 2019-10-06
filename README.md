@@ -18,10 +18,9 @@ _Somewhat close to **Whatsapp** still far far away..._
 - ```npm start``` : To start the server
 
 ### For Devs
-- ```npm run webpack``` : To run webpack in watch mode
-- ```npm run wp``` : To run webpack for production build
-- ```npm run dev``` : To run server with nodemon
-
+- `npm run webpack` : To run webpack in watch mode
+- `npm run wp` : To run webpack for production build
+- `npm run dev` : To start the app in dev mode and go to [http://localhost:3000](http://localhost:3000)
 ### TODOS
 - Proper chatrooms ```!important```
 - Message count badge for chats from other users
