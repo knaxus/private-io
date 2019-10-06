@@ -19,7 +19,7 @@ _Somewhat close to **Whatsapp** still far far away..._
 
 - Clone the repo
 - `npm install` : To install all the packages
-- `npm start` : To start the server
+- `npm run dev` : To start the app in dev mode and go to [http://localhost:3000](http://localhost:3000)
 
 ### For Devs
 
