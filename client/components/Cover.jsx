@@ -35,7 +35,7 @@ class Cover extends Component{
           <p style={{marginTop: '-3%'}}>
             <strong>New Updates:</strong> 
             <br/>
-            * Suopport for emojis <br/>
+            * Support for emojis <br/>
             * Detecting Links
           </p>  
         </div>
