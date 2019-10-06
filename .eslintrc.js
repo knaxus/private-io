@@ -1,7 +1,8 @@
 module.exports = {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "node": true
     },
     "globals": {
         "Atomics": "readonly",
@@ -17,8 +18,6 @@ module.exports = {
     "plugins": [
         "react"
     ],
-    "rules": {
-    },
     "parser": "babel-eslint",
     "extends": "airbnb"
 };
