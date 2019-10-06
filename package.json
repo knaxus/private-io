@@ -5,9 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server",
+    "dev:node": "nodemon server",
     "webpack": "webpack -w",
-    "wp": "webpack -p",
+    "dev:wp": "webpack -p",
+    "dev": "concurrently npm:dev:*",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/eslint .",
     "lint-file": "./node_modules/.bin/eslint "
@@ -36,6 +37,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "concurrently": "^4.1.2",
     "eslint": "^6.5.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
