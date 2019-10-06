@@ -35,6 +35,14 @@ _Somewhat close to **Whatsapp** still far far away..._
 - Sidebar containing online users for mobile devices
 - Typing.. beside the name of the user like - User (Typing now..)
 
+### Contribution Guides
+
+- Adhere to ESLint guidelines
+- Always open PR to the **Develop** branch
+- Make sure app is not breaking before submitting PR
+- If your PR contains conflicts, please fix those yourself
+- Will be updated....
+
 #### Screens
 
 The chat UI
