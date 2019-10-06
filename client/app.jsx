@@ -1,27 +1,30 @@
-import React, {Component} from 'react';
-import {render} from 'react-dom';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
 import ChatApp from './components/ChatApp.jsx';
 import Cover from './components/Cover.jsx';
 import ReactEmoji from 'react-emoji';
 
-class App extends Component{
-  componentDidMount(){
+class App extends Component {
+  componentDidMount() {
+    const socket = io();
+    // exposing the socket globally.
+    window.socket = socket;
     socket.on('connect', () => {
-      this.setState({connectedToServer: true});      
+      this.setState({ connectedToServer: true });
       console.log('Connected to server');
-
       socket.on('UserData', (users) => {
-        this.setState({users});
+        this.setState({ users });
       });
 
       socket.on('NewUserList', (usersList) => {
         const filteredUsersList = usersList.list.filter((user) => user.username !== this.state.activeUser);
-        this.setState({users: filteredUsersList});
+        this.setState({ users: filteredUsersList });
       });
+
 
       socket.on('NewMessage', (thread) => {
         // parse the emojis 
-        thread.text = ReactEmoji.emojify(thread.text);      
+        thread.text = ReactEmoji.emojify(thread.text);
 
         const fromUser = thread.from;
         const toUser = thread.to;
@@ -30,27 +33,27 @@ class App extends Component{
         // search for chat room in state.rooms
         const findRoom = this.state.rooms[roomName];
 
-        if(typeof findRoom !=='undefined'){
+        if (typeof findRoom !== 'undefined') {
           // add threads in the room 
-          this.setState({rooms: [thread, ...this.state.rooms[roomName]]});
+          this.setState({ rooms: [thread, ...this.state.rooms[roomName]] });
           // add new thread with old threads 
           const chats = [thread, ...this.state.rooms[roomName]];
-          this.setState({messages: chats});
+          this.setState({ messages: chats });
         }
         else {
           const newThreads = [...this.state.messages, thread];
-          this.setState({messages: newThreads});
+          this.setState({ messages: newThreads });
         }
       });
 
       socket.on('disconnect', () => {
-        this.setState({connectedToServer: false});        
+        this.setState({ connectedToServer: false });
         console.log('Disconnected from server');
       });
     });
   }
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       connectedToServer: false,
@@ -63,19 +66,19 @@ class App extends Component{
     }
   }
 
-  _addNewUser(username){
+  _addNewUser(username) {
     username = username.charAt(0).toUpperCase() + username.slice(1);
-    const user = {username};
+    const user = { username };
 
     const currentUsers = this.state.users;
     const checkUsername = currentUsers.find((user) => user.username === username);
 
-    if(typeof checkUsername !== 'undefined'){
+    if (typeof checkUsername !== 'undefined') {
       return alert('Username Taken');
     }
 
-    if(this.state.connectedToServer){
-      socket.emit('NewUser', {username});
+    if (this.state.connectedToServer) {
+      socket.emit('NewUser', { username });
       this.setState({
         isSubmitted: true,
         activeUser: username
@@ -87,19 +90,19 @@ class App extends Component{
     }
   }
 
-  _selectUserForChat(username){
+  _selectUserForChat(username) {
     /**
      * Make a unique string with username + activeuser
      * make room using that string
      * store messages of both users in that room 
      */
     const roomName = username + this.state.activeUser;
-    let rooms = null; 
+    let rooms = null;
 
     // find roomName if exists
     const checkRoom = this.state.rooms[roomName];
-    
-    if(typeof checkRoom !== 'undefined'){
+
+    if (typeof checkRoom !== 'undefined') {
       console.log('selec room old chats: => ', checkRoom);
     }
     else {
@@ -117,20 +120,20 @@ class App extends Component{
       });
     }
 
-    this.setState({chattingWith: username});
+    this.setState({ chattingWith: username });
   }
 
-  _sendMessage(message){
+  _sendMessage(message) {
     // const newMessages = [...this.state.messages];
     // newMessages.push(message);
     // this.setState({messages: newMessages});
-    if(this.state.connectedToServer){
-      const thread= {
+    if (this.state.connectedToServer) {
+      const thread = {
         ...message,
         to: this.state.chattingWith
       }
 
-      if(thread.to === 'Choose user to chat with'){
+      if (thread.to === 'Choose user to chat with') {
         return alert('Chooose a person to chat with');
       }
 
@@ -141,21 +144,22 @@ class App extends Component{
     }
   }
 
-  render(){
-    if(this.state.isSubmitted) {
-      return(
-        <ChatApp 
-          {...this.state}  
-          selectUserForChat = {this._selectUserForChat.bind(this)}
-          sendMessage = {this._sendMessage.bind(this)}
+  render() {
+    console.log(this, "app")
+    if (this.state.isSubmitted) {
+      return (
+        <ChatApp
+          {...this.state}
+          selectUserForChat={this._selectUserForChat.bind(this)}
+          sendMessage={this._sendMessage.bind(this)}
         />
       );
     }
-    
-    return(
-      <Cover addUser = {this._addNewUser.bind(this)} />
+
+    return (
+      <Cover addUser={this._addNewUser.bind(this)} />
     )
   }
 }
 
-render(<App/>, document.getElementById('app'));
+render(<App />, document.getElementById('app'));
