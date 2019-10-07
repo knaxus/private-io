@@ -2,6 +2,12 @@ import React, {Component} from 'react';
 import propTypes from 'prop-types';
 
 class Cover extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      placeholderText: 'Type a username here'
+    }
+  }
   _handleUserNameSubmit(e){
     e.preventDefault();
     const {addUser} = this.props;
@@ -11,7 +17,10 @@ class Cover extends Component{
       addUser(username);
     }
     else {
-      this.refs.username.value = 'Username should be more than 3 chars';
+      this.refs.username.value = '';
+      this.setState({
+        placeholderText: 'Username should be more than 3 chars'
+      });
     }
   }
 
@@ -23,7 +32,7 @@ class Cover extends Component{
           <img className="responsive-img" src="img/logo.png" alt="Logo"/>
           <form onSubmit={this._handleUserNameSubmit.bind(this)}>
             <div className="input-field col s6">
-              <input ref="username" id="username" placeholder="Type a username here" type="text" className="validate" autoComplete="off" autoFocus/>
+              <input ref="username" id="username" placeholder={this.state.placeholderText} type="text" className="validate" autoComplete="off" autoFocus/>
             </div>
             <div className="col s4 l2">
               <button className="btn" style={{marginTop: '25px'}}>Start</button>
